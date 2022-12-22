@@ -1,4 +1,3 @@
-from pyspark import SparkContext, SparkConf
 from pyspark.sql import SparkSession
 from pyspark.sql import Row
 
@@ -10,7 +9,7 @@ def mapper(line):
     return Row(ID=int(fields[0]), name=str(fields[1].encode("utf-8")), \
                age=int(fields[2]), numFriends=int(fields[3]))
 
-lines = spark.SparkContext.textFile("./fakefriends.csv")
+lines = spark.sparkContext.textFile("fakefriends.csv")
 people = lines.map(mapper)
 
 # Infer the schema, and register the DataFrame as a table.
@@ -26,4 +25,5 @@ for teen in teenagers.collect():
 
 # We can also use functions instead of SQL queries:
 schemaPeople.groupBy("age").count().orderBy("age").show()
+
 spark.stop()
