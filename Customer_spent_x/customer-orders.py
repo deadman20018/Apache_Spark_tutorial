@@ -14,4 +14,5 @@ totalByCustomers = mappedInput.reduceByKey(lambda x,y: x+y)
 
 results = totalByCustomers.collect()
 for result in results:
+    print("These are the results")
     print(result)

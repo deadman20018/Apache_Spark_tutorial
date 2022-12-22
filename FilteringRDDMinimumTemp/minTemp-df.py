@@ -33,6 +33,6 @@ minTempsByStationF = minTempsByStation.withColumn("temperature",
 results = minTempsByStationF.collect()
 
 for result in results:
-    print(result[0] + "\t{:.2f}F".format(result[1]))
+    print("The minimum result is: "+result[0] + "\t{:.2f}F".format(result[1]))
     
 spark.stop()
