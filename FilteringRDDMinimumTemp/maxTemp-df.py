@@ -10,7 +10,7 @@ schema = StructType([ \
     StructField("measure_type", StringType(), True), \
     StructField("temperature", FloatType(), True)])
 
-# // Read the file as dataframe
+# Read the file as dataframe
 df = spark.read.schema(schema).csv("1800.csv")
 df.printSchema()
 
@@ -24,7 +24,7 @@ stationTemps = maxTemps.select("stationID", "temperature")
 maxTempsByStation = stationTemps.groupBy("stationID").max("temperature")
 maxTempsByStation.show()
 
-# Convert temperature to fahrenheit and sort the dataset
+# Convert temperature to Fahrenheit and sort the dataset
 maxTempsByStationF = maxTempsByStation.withColumn("temperature",
                                                   func.round(func.col("max(temperature)") * 0.1 * (9.0 / 5.0) + 32.0,
                                                              2)) \

@@ -58,7 +58,7 @@ def bfsMap(node):
         color = 'BLACK'
 
     #Emit the input node so we don't lose it.
-    results.append( (characterID, (connections, distance, color)) )
+    results.append((characterID, (connections, distance, color)))
     return results
 
 def bfsReduce(data1, data2):

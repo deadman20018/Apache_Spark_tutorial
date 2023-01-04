@@ -16,7 +16,7 @@ parsedLines = lines.map(parseLine)
 minTemps = parsedLines.filter(lambda x:"TMAX" in x[1])
 stationTemps = minTemps.map(lambda x: (x[0], x[2]))
 
-minTemps  = stationTemps.reduceByKey(lambda x,y:max(x,y))
+minTemps = stationTemps.reduceByKey(lambda x,y:max(x,y))
 
 results = minTemps.collect()
 
